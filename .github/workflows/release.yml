@@ -26,3 +26,36 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh release create "${{ github.ref_name }}" "ServiceBusStudio-${{ github.ref_name }}-windows-x64.zip" --title "Service Bus Studio ${{ github.ref_name }}" --generate-notes
+
+  build-macos:
+    runs-on: macos-latest
+    needs: build-windows
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build
+        run: cargo build --release
+      - name: Package .app bundle
+        run: |
+          APP=ServiceBusStudio.app
+          mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
+          cp target/release/sbx "$APP/Contents/MacOS/ServiceBusStudio"
+          chmod +x "$APP/Contents/MacOS/ServiceBusStudio"
+          cat > "$APP/Contents/Info.plist" <<'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>CFBundleName</key><string>Service Bus Studio</string>
+            <key>CFBundleDisplayName</key><string>Service Bus Studio</string>
+            <key>CFBundleExecutable</key><string>ServiceBusStudio</string>
+            <key>CFBundleIdentifier</key><string>dev.harshit.servicebusstudio</string>
+            <key>CFBundlePackageType</key><string>APPL</string>
+            <key>CFBundleShortVersionString</key><string>1.0.0</string>
+            <key>NSHighResolutionCapable</key><true/>
+          </dict></plist>
+          EOF
+          tar -czf "ServiceBusStudio-${{ github.ref_name }}-macos-arm64.tar.gz" "$APP"
+      - name: Upload to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ github.ref_name }}" "ServiceBusStudio-${{ github.ref_name }}-macos-arm64.tar.gz" --clobber

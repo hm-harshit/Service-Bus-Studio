@@ -12,6 +12,11 @@ A fast, single-binary desktop explorer for Azure Service Bus. Rust rewrite inspi
 `ServiceBusStudio.exe`. No installer, no runtime, no admin rights needed —
 it's one self-contained file.
 
+**macOS (Apple Silicon):** grab `ServiceBusStudio-*-macos-arm64.tar.gz` from the
+[latest release](../../releases/latest), extract, and drag `ServiceBusStudio.app`
+to Applications. The app is unsigned, so on first launch right-click → Open
+(or run `xattr -cr ServiceBusStudio.app`).
+
 **Build from source** (any platform with [Rust](https://rustup.rs)):
 
 ```
