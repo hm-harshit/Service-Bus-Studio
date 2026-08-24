@@ -1,15 +1,15 @@
-# Service Bus Explorer Advance
+# Service Bus Studio
 
-![Service Bus Explorer Advance](assets/banner.jpg)
+![Service Bus Studio](assets/banner.jpg)
 
 A fast, single-binary desktop explorer for Azure Service Bus. Rust rewrite inspired by
 [paolosalvatori/ServiceBusExplorer](https://github.com/paolosalvatori/servicebusexplorer).
 
 ## Install
 
-**Windows:** grab `ServiceBusExplorerAdvance-*-windows-x64.zip` from the
+**Windows:** grab `ServiceBusStudio-*-windows-x64.zip` from the
 [latest release](../../releases/latest), unzip anywhere, and run
-`ServiceBusExplorerAdvance.exe`. No installer, no runtime, no admin rights needed —
+`ServiceBusStudio.exe`. No installer, no runtime, no admin rights needed —
 it's one self-contained file.
 
 **Build from source** (any platform with [Rust](https://rustup.rs)):

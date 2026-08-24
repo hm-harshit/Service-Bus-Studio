@@ -97,7 +97,7 @@ fn main() -> eframe::Result {
             .with_inner_size([1360.0, 860.0])
             .with_min_inner_size([900.0, 600.0])
             .with_icon(icon)
-            .with_title(format!("Service Bus Explorer Advance {}", env!("CARGO_PKG_VERSION"))),
+            .with_title(format!("Service Bus Studio {}", env!("CARGO_PKG_VERSION"))),
         ..Default::default()
     };
     eframe::run_native(
@@ -530,7 +530,7 @@ impl App {
                     }
                 });
                 ui.menu_button("Help", |ui| {
-                    if ui.button("About Service Bus Explorer Advance…").clicked() {
+                    if ui.button("About Service Bus Studio…").clicked() {
                         self.show_about = true;
                     }
                 });
@@ -542,7 +542,7 @@ impl App {
                 ui.label(
                     RichText::new("Service Bus Explorer").family(serif()).size(19.0).color(pal().text),
                 );
-                ui.label(RichText::new("ADVANCE").color(pal().accent).size(11.0).strong());
+                ui.label(RichText::new("STUDIO").color(pal().accent).size(11.0).strong());
                 ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                     ui.add_space(4.0);
                     if ui
@@ -1360,7 +1360,7 @@ impl App {
                     ui.vertical_centered(|ui| {
                         ui.add_space(4.0);
                         ui.label(RichText::new("✳").color(pal().accent).size(34.0));
-                        ui.label(RichText::new("Service Bus Explorer Advance").family(serif()).size(19.0));
+                        ui.label(RichText::new("Service Bus Studio").family(serif()).size(19.0));
                         ui.label(RichText::new(format!("Version {}", env!("CARGO_PKG_VERSION"))).color(pal().text_weak));
                     });
                     ui.add_space(8.0);

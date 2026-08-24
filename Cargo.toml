@@ -2,7 +2,7 @@
 name = "sbx"
 version = "1.0.0"
 edition = "2024"
-description = "Service Bus Explorer Advance — a fast, modern Azure Service Bus explorer"
+description = "Service Bus Studio — a fast, modern Azure Service Bus explorer"
 authors = ["Harshit Mahendra"]
 
 [profile.release]
